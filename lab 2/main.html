@@ -1,17 +1,16 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=>, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    <header>
-        <h1 style="font-family: 'Courier New', Courier, monospace; margin-left: 500px;">Feetback form</h1>
-    </header>
-    <main>
-        <div class="container">
-            <form action="https://httpbin.org/post" method="post" style="margin-left: 500px;">
+    <a href="get.php?name=maksim&age=18">Hello</a>
+    <div class="container">
+        <form action="get.php" method="get" style="margin-left: 500px;">
             <div class="mb-3">
                 <label for="name">Enter your name</label>
                 <input type="text" name="name" id="name" style="margin-left: 15px;">
@@ -30,10 +29,11 @@
             <div class="mb-3">
                 <textarea name="desc" id="desc" cols="50" rows="15">description</textarea>
             </div>
-                <button type="submit" style="width: 150px; height: 30px; margin-left: 130px; margin-bottom: 30px; background-color:wheat; border-radius: 15px;">Send</button>
-            </form>
-            <a href="back.php" style="width: 150px; height: 30px; margin-left: 660px;  border-radius: 15px;">Get headers</a>
-        </div>
-    </main>
+            <button type="submit"
+                style="width: 150px; height: 30px; margin-left: 130px; margin-bottom: 30px; background-color:wheat; border-radius: 15px;">Send</button>
+        </form>
+        <a href="back.php" style="width: 150px; height: 30px; margin-left: 660px;  border-radius: 15px;">Get headers</a>
+    </div>
 </body>
+
 </html>
