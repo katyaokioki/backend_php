@@ -49,7 +49,7 @@
                                         $arg = calculate($arg);
                                     }
 
-                                    $sum += $arg;
+                                    $sum += (int)$arg;
                                 }
                                 return $sum;
                             }
@@ -80,7 +80,7 @@
                                     if (!isNum($arg)) {
                                         $arg = calculate($args[$i]);
                                     }
-                                    $sup *= $arg;
+                                    $sup *= (int)$arg;
                                 }
                                 return $sup;
                             }
