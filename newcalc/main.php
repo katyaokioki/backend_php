@@ -9,11 +9,11 @@
     <title>Lab_4</title>
 </head>
 <body>
-<header "> 
+<header> 
         <h1>Замятин М А 231-321 </h1>
     </header>
     <main>
-        <div class="wrapper" id="calculator">
+        <div class="wrapper" id="calculator" style="height:600px">
             <form method="post">
                 <div class="top">
                     <label class="label">
@@ -120,25 +120,48 @@
                             if ($open !== 0) return false;
                             return true;
                         }
-
-                        function calculateSq($val)
-                        { //1+(2+3)
-                            if (!SqValidator($val)) return 'Неправильная расстановка скобок';
-                            $start = strpos($val, '('); //start = 2
-                            if ($start === false) return calculate($val);
-                            $end = $start + 1; //end = 3
-                            $open = 1;
-                            while ($open && $end < strlen($val)) {
-                                if ($val[$end] == '(') $open++;
-                                if ($val[$end] == ')') $open--; //open = 0 end = 6
-                                $end++; //3 4 5 
+                        
+                        function calculateTrigonometry($func, $arg) {
+                            switch ($func) {
+                                case 'sin':
+                                    return sin(deg2rad($arg));
+                                case 'cos':
+                                    return cos(deg2rad($arg));
+                                case 'tan':
+                                    return tan(deg2rad($arg));
+                                case 'cot':
+                                    return 1 / tan(deg2rad($arg));
+                                default:
+                                    return 'Неподдерживаемая функция';
                             }
-                            $new_val = substr($val, 0, $start);
-                            $new_val .= calculateSq(substr($val, $start + 1, $end - $start - 2));
-                            $new_val .= substr($val, $end);
-
-                            return calculateSq($new_val);
                         }
+                        function calculateSq($val)
+                        {
+                            $val = str_replace(' ', '', $val);
+                            if (preg_match('/(sin|cos|tan|cot)\([\d.]+\)/', $val)) {
+                                $val = preg_replace_callback('/(sin|cos|tan|cot)\(([\d.]+)\)/', function($matches) {
+                                    $func = $matches[1];
+                                    $arg = floatval($matches[2]);
+                                    return calculateTrigonometry($func, $arg);
+                                }, $val);
+                            }
+                            if (strpos($val, '(') !== false) {
+                                $start = strpos($val, '(');
+                                $end = $start + 1;
+                                $open = 1;
+                                while ($open && $end < strlen($val)) {
+                                    if ($val[$end] == '(') $open++;
+                                    if ($val[$end] == ')') $open--;
+                                    $end++;
+                                }
+                                $new_val = substr($val, 0, $start);
+                                $new_val .= calculateSq(substr($val, $start + 1, $end - $start - 2));
+                                $new_val .= substr($val, $end);
+                                return calculateSq($new_val);
+                            }
+                            return calculate($val);
+                        }
+                        
                         if (isset($_POST['equation'])) {
                             $res = calculateSq($_POST['equation']);
                             echo $res;
@@ -164,6 +187,10 @@
                     <button class="pins">(</button>
                     <button class="pins">)</button>
                     <button class="operator pins">*</button>
+                    <button class="operator pins" style="width:75px">sin</button>
+                    <button class="operator pins" style="width:75px">cos</button>
+                    <button class="operator pins" style="width:75px">tan</button>
+                    <button class="operator pins" style="width:75px">cot</button>
                     <button class="eval" type="submit">ВЫЧИСЛИТЬ</button>
                 </div>
             </form>
