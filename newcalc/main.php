@@ -49,7 +49,7 @@
                                         $arg = calculate($arg);
                                     }
 
-                                    $sum += (int)$arg;
+                                    $sum += (float)$arg;
                                 }
                                 return $sum;
                             }
@@ -66,7 +66,7 @@
                                     if (!is_numeric($args[$i])) {
                                         $args[$i] = calculate($args[$i]);
                                     }
-                                    $minusRez -= $args[$i];
+                                    $minusRez -= (float)$args[$i];
                                 }
                                 return $minusRez;
                             }
@@ -80,7 +80,7 @@
                                     if (!isNum($arg)) {
                                         $arg = calculate($args[$i]);
                                     }
-                                    $sup *= (int)$arg;
+                                    $sup *= (float)$arg;
                                 }
                                 return $sup;
                             }
@@ -97,7 +97,7 @@
                                     }
                                     if ($args[$i] == 0) {
                                         return 'НА 0 ДЕЛИТЬ НЕЛЬЗЯ!';
-                                        $del /= $args[$i];
+                                        $del /= (float)$args[$i];
                                     }
                                 }
                                 return $del;
