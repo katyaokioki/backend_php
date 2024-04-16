@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header></header>
+    <main>
+        <h1>Текст задачи:</h1>
+        <p></p>
+    </main>
+    <footer>
+        <p>ФИO: Замятин Максим Анатольевич</p>
+        <p>Номер группы: 231-321</p>
+        <p>Дата выполнения: 26.03.2024</p>
+    </footer>
+    
+</body>
+</html>
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Время прибытия поезда</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+  }
+
+  label {
+    font-weight: bold;
+  }
+
+  input[type="number"] {
+    width: 50px;
+    padding: 5px;
+    border-radius: 5px;
+    transition: border-color 0.3s ease;
+  }
+
+  input[type="number"].valid {
+    border: 2px solid green;
+  }
+
+  input[type="number"].invalid {
+    border: 2px solid red;
+  }
+
+  button {
+    margin-top: 10px;
+    padding: 8px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #0056b3;
+  }
+
+  #result {
+    margin-top: 10px;
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+  <form id="trainForm">
+    <label for="arrivalTimeInput">Введите время прибытия поезда (часы):</label><br>
+    <input type="number" id="arrivalTimeInput" name="arrivalTimeInput" min="1" max="24" required><br>
+    <label for="delayInput">Введите время задержки (часы):</label><br>
+    <input type="number" id="delayInput" name="delayInput" min="1" max="24" required><br>
+    <button type="submit">Посчитать</button>
+  </form>
+  <div id="result"></div>
+
+  <script>
+    document.getElementById('trainForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // предотвращаем отправку формы
+      const arrivalTimeInput = document.getElementById('arrivalTimeInput');
+      const delayInput = document.getElementById('delayInput');
+
+      // Валидация введенных данных
+      const arrivalTime = parseInt(arrivalTimeInput.value);
+      const delay = parseInt(delayInput.value);
+      if (isNaN(arrivalTime) || isNaN(delay) || arrivalTime < 1 || arrivalTime > 24 || delay < 1 || delay > 24) {
+        arrivalTimeInput.classList.remove('valid');
+        arrivalTimeInput.classList.add('invalid');
+        delayInput.classList.remove('valid');
+        delayInput.classList.add('invalid');
+        document.getElementById('result').innerText = 'Ошибка: Пожалуйста, введите корректные данные (целые числа от 1 до 24).';
+        return;
+      }
+      
+      arrivalTimeInput.classList.remove('invalid');
+      arrivalTimeInput.classList.add('valid');
+      delayInput.classList.remove('invalid');
+      delayInput.classList.add('valid');
+
+      const arrivalTimeAfterDelay = calculateArrivalTime(arrivalTime, delay);
+      document.getElementById('result').innerText = `Поезд прибудет в ${arrivalTimeAfterDelay} часов.`;
+    });
+
+    function calculateArrivalTime(arrivalTime, delay) {
+      let arrivalTimeAfterDelay = arrivalTime + delay;
+      if (arrivalTimeAfterDelay > 24) {
+        arrivalTimeAfterDelay -= 24;
+      }
+      return arrivalTimeAfterDelay;
+    }
+  </script>
+</body>
+</html> -->
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Посадка цветов</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+  }
+
+  label {
+    font-weight: bold;
+  }
+
+  input[type="text"] {
+    width: 300px;
+    padding: 5px;
+    border-radius: 5px;
+    transition: border-color 0.3s ease;
+  }
+
+  input[type="text"].valid {
+    border: 2px solid green;
+  }
+
+  input[type="text"].invalid {
+    border: 2px solid red;
+  }
+
+  button {
+    margin-top: 10px;
+    padding: 8px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #0056b3;
+  }
+
+  #result {
+    margin-top: 10px;
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+  <form id="flowerForm">
+    <label for="clumbsInput">Введите последовательность клумб (0 - пустая, 1 - засажена):</label><br>
+    <input type="text" id="clumbsInput" name="clumbsInput" required><br>
+    <label for="flowersInput">Введите количество цветов:</label><br>
+    <input type="number" id="flowersInput" name="flowersInput" required><br>
+    <button type="submit">Проверить</button>
+  </form>
+  <div id="result"></div>
+
+  <script>
+    document.getElementById('flowerForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // предотвращаем отправку формы
+      const clumbsInput = document.getElementById('clumbsInput');
+      const flowersInput = document.getElementById('flowersInput');
+
+      // Валидация введенных данных
+      const clumbs = clumbsInput.value.trim().split(',').map(Number);
+      const n = parseInt(flowersInput.value);
+      if (clumbs.some(isNaN) || clumbs.some(num => num !== 0 && num !== 1) || isNaN(n) || n < 1) {
+        clumbsInput.classList.remove('valid');
+        clumbsInput.classList.add('invalid');
+        flowersInput.classList.remove('valid');
+        flowersInput.classList.add('invalid');
+        document.getElementById('result').innerText = 'Ошибка: Пожалуйста, введите правильные данные.';
+        return;
+      }
+      
+      clumbsInput.classList.remove('invalid');
+      clumbsInput.classList.add('valid');
+      flowersInput.classList.remove('invalid');
+      flowersInput.classList.add('valid');
+
+      const canPlant = canPlantFlowers(clumbs, n);
+      document.getElementById('result').innerText = `Можно ли посадить ${n} цветов: ${canPlant}`;
+    });
+
+    function canPlantFlowers(clumbs, n) {
+      let availableSpaces = 0;
+      let emptySpaces = 0;
+
+      for (let i = 0; i < clumbs.length; i++) {
+          if (clumbs[i] === 0) {
+              emptySpaces++;
+
+              if ((i === 0 || clumbs[i - 1] === 0) && (i === clumbs.length - 1 || clumbs[i + 1] === 0)) {
+                  availableSpaces++;
+                  i++; // Пропускаем следующее место, так как нельзя сажать цветы рядом
+              }
+          }
+      }
+
+      return n <= availableSpaces && n <= emptySpaces;
+    }
+  </script>
+</body>
+</html>
+ -->
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Наибольшее счастливое число</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+  }
+
+  label {
+    font-weight: bold;
+  }
+
+  input[type="text"] {
+    width: 300px;
+    padding: 5px;
+    border-radius: 5px;
+    transition: border-color 0.3s ease;
+  }
+
+  input[type="text"].valid {
+    border: 2px solid green;
+  }
+
+  input.invalid {
+    border: 2px solid red;
+  }
+
+  button {
+    margin-top: 10px;
+    padding: 8px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #0056b3;
+  }
+
+  #result {
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  </style>
+</head>
+<body>
+  <form id="numberForm">
+    <label for="numberInput">Введите целые числа, разделённые запятой:</label><br>
+    <input type="text" id="numberInput" name="numberInput" required><br>
+    <button type="submit">Проверить</button>
+  </form>
+  <div id="result"></div>
+
+  <script>
+    document.getElementById('numberForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // предотвращаем отправку формы
+      const input = document.getElementById('numberInput').value.trim();
+      
+      // Валидация введенных данных
+      const numbers = input.split(',').map(Number);
+      if (numbers.some(isNaN)) {
+        document.getElementById('result').innerText = 'Ошибка: Пожалуйста, введите только целые числа, разделенные запятой.';
+        return;
+      }
+      
+      const happyNumber = findHappyNumber(numbers);
+      document.getElementById('result').innerText = `Наибольшее счастливое число: ${happyNumber}`;
+    });
+
+    function findHappyNumber(numbers) {
+      const freqMap = new Map();
+      for (const num of numbers) {
+        freqMap.set(num, (freqMap.get(num) || 0) + 1);
+      }
+      let maxHappy = -1;
+      for (const [num, freq] of freqMap.entries()) {
+        if (num === freq) {
+          maxHappy = Math.max(maxHappy, num);
+        }
+      }
+      return maxHappy;
+    }
+  </script>
+</body>
+</html> -->

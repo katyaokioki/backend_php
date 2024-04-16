@@ -1,9 +1,29 @@
+
 <?php
-    if (isset($_GET['o'])){
-        $sql = 'SELECT * FROM `friends` ORDER BY `'.$_GET['o'].'`';
-    }else $sql ='SELECT * FROM `friends`' ;
+
+    $rows_view = 5;
+        
+    $sql = 'SELECT COUNT(*) FROM `friends`';
     $res = mysqli_query($connect, $sql);
-    if (mysqli_errno($connect)) print_r(mysqli_stmt_error($connect));
+    $rows = mysqli_fetch_row($res)[0];
+    $pages = ceil($rows/$rows_view);
+
+        $sql ='SELECT * FROM `friends` ORDER BY `'.$_GET['o'].'` LIMIT '.$_GET['page']*$rows_view.','.$rows_view.'';
+        $res = mysqli_query($connect, $sql);
+        print_r($sql);
+    if (mysqli_errno($connect)) print_r(mysqli_error($connect));
+    $pages = ceil($rows/$rows_view);
+
+
+    // $rows_view = 5;
+
+    // $sql = 'SELECT COUNT(*) FROM `friends`';
+    // $res = mysqli_query($connect, $sql);
+    // $rows = mysqli_fetch_row($res)[0];
+    // $pages = ceil($rows/$rows_view);
+    // $sql = 'SELECT * FROM `friends` ORDER BY `'.$_GET['o'].'`';
+    // $res = mysqli_query($connect, $sql);
+    // if (mysqli_errno($connect)) print_r(mysqli_stmt_error($connect));
 ?>
 
 <table class="table">
@@ -38,3 +58,14 @@
         <?php endwhile;?>
     </tbody>
 </table>
+<nav>
+    <ul class="pagination pagination-sm">
+        <?php for ($i = 0; $i < $pages; $i++):?>
+            <li class="page-item <?php echo ($i == $_GET['page']) ? 'active' : ''; ?>">
+                <a class="page-link" href="<?=$_SERVER['SCRIPT_NAME'];?>?page=<?=$i;?>&o=<?=$_GET['o'];?>">
+                    <?=$i+1?>
+                </a>
+            </li>
+        <?php endfor;?>
+    </ul>
+</nav>

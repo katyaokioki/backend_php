@@ -3,7 +3,9 @@
     $connect = mysqli_connect($db['host'], $db['username'], $db['password'], $db['database']);
     if (mysqli_connect_errno()) print_r(mysqli_connect_error());
     if(!isset($_GET['p'])) $_GET['p'] = 'view';
-    if (isset($_POST['firstname'])){
+    if(!isset($_GET['o'])) $_GET['o'] = 'id';
+    if(!isset($_GET['page'])) $_GET['page'] = '0';
+    if (isset($_POST['save'])){
         $sql = "INSERT INTO `friends`
                 (`firstname`, `name`, `lastname`, `gender`, `date`, `phone`, `email`, `address`, `coment`)
                 VALUES (
