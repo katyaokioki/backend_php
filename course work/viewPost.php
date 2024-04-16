@@ -46,7 +46,6 @@ session_start();
         <?php
         require_once './vendor/connect.php';
 
-        // Запрос для выборки всех хештегов из таблицы hashtags и связанных сообщений
         $sql = "SELECT hashtags.name AS hashtag_name, GROUP_CONCAT(sms.Description SEPARATOR '|') AS messages, GROUP_CONCAT(users.full_name) AS senders
                 FROM hashtags
                 LEFT JOIN sms ON FIND_IN_SET(hashtags.id, sms.hashtag_id)
@@ -55,7 +54,6 @@ session_start();
 
         $result = $connect->query($sql);
 
-        // Если есть хештеги, выводим сообщения для каждого хештега
         if ($result->num_rows > 0) {
           while ($row = $result->fetch_assoc()) {
             $hashtag_name = $row["hashtag_name"];
@@ -65,7 +63,6 @@ session_start();
             echo "<li class='news-line__item'>";
             echo "<p class='news-line__message'>#" . $hashtag_name . "</p>";
 
-            // Выводим отправителя и соответствующее сообщение для каждой группы
             foreach ($messages as $index => $message) {
               $sender = $senders[$index];
               echo "<p class='news-line__user'>От: " . $sender . "</p>";
