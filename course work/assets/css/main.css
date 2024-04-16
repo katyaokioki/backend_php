@@ -2,15 +2,17 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: #e6ccb2; /* Бежевый фон */
 }
+
+
 
 body {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-family: Arial, sans-serif; /* Шрифт Arial или аналогичный без засечек */
+  font-family: Arial, sans-se,3rif; /* Шрифт Arial или аналогичный без засечек */
+  background-color: black; /* Бежевый фон */
 }
 
 header {
@@ -22,16 +24,27 @@ header {
   margin-bottom: 50px;
 }
 
+h2{
+  color: whitesmoke;
+  font-family: sans-serif;
+  font-size: 30px;
+}
+label,p{
+  color: whitesmoke;
+  font-family: sans-serif;
+  font-size: 16px;
+}
 .wrap-logo {
   display: flex;
   align-items: center;
 }
 
 header a {
-  color: #8b0000; /* Темно-красный */
+  color: whitesmoke; 
+  font-family: Arial, sans-serif; 
+  font-size: 36px;
   padding: 12px;
   text-decoration: none;
-  font-size: 18px;
   border-radius: 4px;
 }
 
@@ -41,12 +54,12 @@ header a.logo {
 }
 
 header a:hover {
-  background-color: #add8e6; /* Светло-голубой при наведении */
-  color: #000; /* Черный текст при наведении */
+  background-color: rgb(255, 196, 0);
+  transition: background 1s ease;
 }
 
 header a.active {
-  background-color: #add8e6; /* Светло-голубой */
+  background-color: red; 
 }
 
 nav {
@@ -57,9 +70,15 @@ nav {
 }
 
 a {
-  color: #4682b4; /* Темно-синий */
+  color: #0f0ff6;
+  font-family: sans-serif;
+  font-size: 16px;
   font-weight: bold;
   text-decoration: none;
+}
+.password{
+  color: gray;
+  font-size: 14px;
 }
 
 p {
@@ -76,17 +95,25 @@ input {
   margin: 10px 0;
   padding: 10px;
   border: unset;
-  border-bottom: 2px solid #808080; /* Серый */
+  border-bottom: 2px solid #0a1a75; /* Серый */
   outline: none;
 }
 
 button {
   padding: 10px;
-  background: #556b2f; /* Темно-зеленый */
+  background: rgb(22, 22, 179); /* Темно-зеленый */
+  color: whitesmoke;
+  font-size: 24px;
+  border-radius: 30px;
   border: unset;
   cursor: pointer;
-}
+  transition: background-color 1s ease;
 
+}
+button:hover{
+  background-color: #0a1a75;
+  transition: background-color 1s ease;
+}
 .error {
   border-bottom: 2px solid #8b0000; /* Темно-красный для ошибок */
 }
@@ -104,7 +131,15 @@ button {
 }
 
 .logout {
-  color: #e6ccb2; /* Бежевый */
+  color: #e6ccb2;
+  font-family: sans-serif;
+  font-size: 24px;
+  background-color: #0a13bf;
+  width: 120px;
+  height: 30px;
+  margin: 10px;
+  border-radius: 30px;
+  text-align: center;
 }
 
 .navigation-post {
@@ -129,7 +164,7 @@ button {
 
 .navigation-post__item > .active {
   padding: 15px;
-  background-color: #006400; /* Темно-зеленый */
+  background-color: #0a13bf; /* Темно-зеленый */
   border-radius: 20px;
   color: #fff; /* Белый */
 }
@@ -143,14 +178,14 @@ button {
 
 .message__textarea {
   margin: 1rem 0rem;
-  border: 3px solid #2f4f4f; /* Темно-серый */
+  border: 3px solid #166262; /* Темно-серый */
   border-radius: 1rem;
 }
 
 .message__bth {
   padding: 1rem;
   border-radius: 1rem;
-  background-color: #4682b4; /* Темно-синий */
+  background-color: #1343a2; /* Темно-синий */
   color: white;
   font-size: 1.3rem;
 }
@@ -175,10 +210,10 @@ button {
 }
 
 .news-line__item {
-  background-color: #556b2f; /* Темно-зеленый */
+  background-color: #2415a9; /* Темно-зеленый */
   color: white;
   max-width: 300px;
-  margin: 2rem;
+  margin: 20px 20px;
   padding: 1rem;
   border-radius: 1rem;
 }
@@ -187,3 +222,5 @@ button {
   font-size: 1.3rem;
   font-weight: bold;
 }
+
+

@@ -43,6 +43,7 @@ session_start();
             <label>Пароль</label>
             <p class="error-message"></p>
             <input class="input" type="password" name="password" placeholder="Введите пароль" required>
+            <p class="password">Пароль минимум 8 символов, должны быть числа, знаки !? и большие буквы латинского алфавита</p>
             <label>Подтверждение пароля</label>
             <input class="input" type="password" name="password_confirm" placeholder="Подтвердите пароль" required>
             <button type="submit">Зарегистрироваться</button>

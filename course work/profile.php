@@ -20,7 +20,7 @@ session_start();
                 <a class="active" href="./index.php">Авторизация</a>
             <?php } ?>
             <?php if (isset($_SESSION['user'])) { ?>
-                <a href="./profile.php">Профиль</a>
+                <a class="active" href="./profile.php">Профиль</a>
             <?php } ?>
             <a href="./addPost.php">Посты</a>
         </nav>

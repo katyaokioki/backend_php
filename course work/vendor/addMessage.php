@@ -5,18 +5,16 @@ require_once 'connect.php';
 $userid = $_SESSION['user']['id'];
 $text = $_POST["sms"];
 
-// Найти все хэштеги в сообщении
 preg_match_all('/#\w+/', $text, $matches);
 $hashtags = $matches[0];
 
-// Удалить все хэштеги из текста сообщения
 $text_without_hashtags = preg_replace('/#\w+\s*/', '', $text);
 
 if (!empty($hashtags)) {
     $hashtags[0] = ltrim($hashtags[0], '#');
     $hashtags_str = implode('', $hashtags);
 
-    $sql = "INSERT INTO `hashtags` (name, Data) VALUES ('$hashtags_str', '$text')";
+    $sql = "INSERT INTO `hashtags` (name) VALUES ('$hashtags_str')";
     if ($connect->query($sql) === FALSE) {
         echo "Error: " . $sql . "<br>" . $connect->error;
     }
