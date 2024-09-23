@@ -3,7 +3,9 @@
 <div class="card mt-3" style="width: 18rem;">
     <div class="card-body">
         <h5 class="card-title"><?= $article->getName(); ?></h5>
-        <h6 class="card-subtitle mb-2 text-muted"><?= $user->getNickname(); ?></h6>
+        <h6 class="card-subtitle mb-2 text-muted">
+    <?= isset($articles) ? htmlspecialchars($article->getAuthorId()) : 'Неизвестный автор'; ?>
+</h6>
         <p class="card-text"><?= $article->getText(); ?></p>
         <a href="<?= dirname($_SERVER['SCRIPT_NAME']); ?>/article/edit/<?= $article->getId(); ?>" class="card-link">Edit Article</a>
         <a href="<?= dirname($_SERVER['SCRIPT_NAME']); ?>/article/delete/<?= $article->getId(); ?>" class="card-link">Delete Article</a>
@@ -28,6 +30,7 @@
         <p>Комментариев пока нет.</p>
     <?php endif; ?>
 
+    <?php if ($user): ?>
     <div class="mt-4">
         <h5>Добавить комментарий</h5>
         <form action="<?= dirname($_SERVER['SCRIPT_NAME']); ?>/comment/create" method="post">
@@ -40,6 +43,9 @@
             <button type="submit" class="btn btn-primary mt-2">Добавить комментарий</button>
         </form>
     </div>
+<?php else: ?>
+    <p>Вы должны быть авторизованы для добавления комментариев.</p>
+<?php endif; ?>
 </div>
 
 
